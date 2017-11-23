@@ -58,3 +58,6 @@ build_script:
 test_script:
     - cd %APPVEYOR_BUILD_FOLDER%
     - if /i "%DO_PYTHON%" == "on" python -m nose tests/python
+
+artifacts:
+    - path: lib/xgboost.dll
