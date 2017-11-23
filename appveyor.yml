@@ -61,3 +61,6 @@ test_script:
 
 artifacts:
     - path: lib/xgboost.dll
+      name: XGBoost.dll
+    - path: jvm-packages/xgboost4j/target/xgboost4j*with-dependencies.jar
+      name: XGBoost java archive including dependencies
