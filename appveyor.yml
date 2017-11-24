@@ -58,6 +58,8 @@ build_script:
     - if /i "%target%" == "packages" (
         javac -version &&
         cd %APPVEYOR_BUILD_FOLDER% &&
+        cp make/mingw64.mk config.mk &&
+        make -j2 &&
         make jvm &&
         cd jvm-packages &&
         mvn package -Dcheckstyle.skip=true
