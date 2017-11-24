@@ -59,7 +59,7 @@ build_script:
     - if /i "%target%" == "jvm" cd jvm-packages && mvn test -pl :xgboost4j
     - if /i "%target%" == "packages" (
         java -version &&
-        "%JAVA_HOME%\bin\java" -version &&
+        "%JAVA_HOME%\bin\java" -version -XX:+PrintCommandLineFlags &&
         cd %APPVEYOR_BUILD_FOLDER% &&
         cp make/mingw64.mk config.mk &&
         make -j2 &&
