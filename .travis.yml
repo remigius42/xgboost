@@ -97,6 +97,7 @@ deploy:
   skip_cleanup: true
   on:
     all_branches: true
+    condition: "$TASK = build_dylib"
 
 notifications:
   email:
