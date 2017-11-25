@@ -1,3 +1,7 @@
+branches:
+  only:
+    - custom_travis_build
+
 # disable sudo for container build.
 sudo: required
 
