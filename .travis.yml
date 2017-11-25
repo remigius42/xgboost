@@ -96,7 +96,8 @@ deploy:
   file: 'lib/xgboost.dylib'
   skip_cleanup: true
   on:
-    tags
+    tags: true
+    all_branches: true
 
 notifications:
   email:
