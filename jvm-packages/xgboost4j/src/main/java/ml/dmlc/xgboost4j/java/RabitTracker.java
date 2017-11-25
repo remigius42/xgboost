@@ -130,7 +130,8 @@ public class RabitTracker implements IRabitTracker {
   private boolean startTrackerProcess() {
     try {
       trackerProcess.set(Runtime.getRuntime().exec("python " + tracker_py +
-              " --log-level=DEBUG --num-workers=" + String.valueOf(numWorkers)));
+						   " --log-level=DEBUG --num-workers=" + String.valueOf(numWorkers) +
+						   " --host-ip=127.0.0.1"));
       loadEnvs(trackerProcess.get().getInputStream());
       return true;
     } catch (IOException ioe) {
