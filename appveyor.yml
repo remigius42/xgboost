@@ -1,6 +1,6 @@
 environment:
     JAVA_HOME: 'C:\Program Files\Java\jdk1.8.0'
-    MAVEN_OPTS: '-Xmx1024m  -XX:MaxPermSize=256m'
+    MAVEN_OPTS: '-Xmx2048m  -XX:MaxPermSize=256m'
     matrix:
         - target: msvc
           ver: 2013
@@ -65,7 +65,7 @@ build_script:
         make -j2 &&
         make jvm &&
         cd jvm-packages &&
-        mvn package -Dcheckstyle.skip=true -DskipTests=true
+        mvn package -Dcheckstyle.skip=true
       )
 
 test_script:
