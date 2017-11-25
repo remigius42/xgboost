@@ -129,7 +129,7 @@ public class RabitTracker implements IRabitTracker {
 
   private boolean startTrackerProcess() {
     try {
-      String dmlc_tracker_uri = System.gentenv().get("DMLC_TRACKER_URI");
+      String dmlc_tracker_uri = System.getenv("DMLC_TRACKER_URI");
       String host_ip_parameter = (dmlc_tracker_uri != 0) ? " --host-ip=" + dmlc_tracker_uri : "";
       trackerProcess.set(Runtime.getRuntime().exec("python " + tracker_py +
               " --log-level=DEBUG --num-workers=" + String.valueOf(numWorkers) +
