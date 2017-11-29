@@ -69,9 +69,10 @@ build_script:
         cd %APPVEYOR_BUILD_FOLDER% &&
         cp make/mingw64.mk config.mk &&
         make -j2 &&
+        cp make/mingw64.mk config.mk &&
         make jvm &&
         cd jvm-packages &&
-        mvn package -Dcheckstyle.skip=true
+        mvn package -Dcheckstyle.skip=true -DskipTests=true
       )
 
 test_script:
@@ -83,3 +84,6 @@ artifacts:
       name: XGBoost.dll
     - path: jvm-packages/xgboost4j/target/xgboost4j*with-dependencies.jar
       name: XGBoost java archive including dependencies
+    - name: libxgboost4j.so
+      path: jvm-packages/lib/libxgboost4j.so
+      
