@@ -68,9 +68,9 @@ build_script:
         netsh advfirewall set allprofiles state off &&
         cd %APPVEYOR_BUILD_FOLDER% &&
         cp make/mingw64.mk config.mk &&
-        make -j2 &&
+        mingw32-make -j2 &&
         cp make/mingw64.mk config.mk &&
-        make jvm &&
+        mingw32-make jvm &&
         cd jvm-packages &&
         mvn package -Dcheckstyle.skip=true -DskipTests=true
       )
