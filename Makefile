@@ -166,7 +166,7 @@ lib/xgboost.dll lib/libxgboost.so lib/libxgboost.dylib: $(ALL_DEP)
 
 jvm-packages/lib/libxgboost4j.so: jvm-packages/xgboost4j/src/native/xgboost4j.cpp $(ALL_DEP)
 	@mkdir -p $(@D)
-	$(CXX) $(CFLAGS) $(JAVAINCFLAGS) -shared -o $@ $(filter %.cpp %.o %.a, $^) $(LDFLAGS)
+	$(CXX) $(CFLAGS) $(JAVAINCFLAGS) -shared -static-libstdc++ -o $@ $(filter %.cpp %.o %.a, $^) $(LDFLAGS)
 
 
 xgboost: $(CLI_OBJ) $(ALL_DEP)
