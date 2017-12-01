@@ -67,6 +67,8 @@ before_install:
   - echo "MAVEN_OPTS='-Xmx2g -XX:MaxPermSize=1024m -XX:ReservedCodeCacheSize=512m -Dorg.slf4j.simpleLogger.defaultLogLevel=error'" > ~/.mavenrc
   - brew update
   - brew install gcc
+  - brew tap caskroom/versions
+  - brew cask install java8
 
 install:
   - source tests/travis/setup.sh

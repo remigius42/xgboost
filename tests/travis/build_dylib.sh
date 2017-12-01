@@ -36,6 +36,9 @@ if [ ${TASK} == "build_jvm" ]; then
     export CXX=g++-7
     echo "gcc info"
     g++-7 --version
+    echo "java_home: ${JAVA_HOME}"
+    which javac
+    javac --version
     cp make/config.mk ./config.mk
     make jvm
 fi
