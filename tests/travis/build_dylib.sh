@@ -24,7 +24,7 @@ if [ ${TASK} == "build_dylib" ]; then
     export CC=gcc-7
     export CXX=g++-7
     echo "gcc info"
-    gcc --version
+    g++-7 --version
     cp make/config.mk ./config.mk
     make -j2
 fi
