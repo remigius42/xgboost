@@ -41,7 +41,14 @@ if [ ${TASK} == "build_jvm" ]; then
     echo "java_home: ${JAVA_HOME}"
     which javac
     javac -version
+    echo "javac in JAVA_HOME"
     ${JAVA_HOME}/bin/javac -version
+    echo "ls JAVA_HOME headers"
+    ls ${JAVA_HOME}/include
+    echo "ls JAVA_HOME headers darwin"
+    ls ${JAVA_HOME}/include/darwin
+    echo "ls system Java headers"
+    ls /System/Library/Frameworks/JavaVM.framework/Headers
     cp make/config.mk ./config.mk
     make jvm
 fi
