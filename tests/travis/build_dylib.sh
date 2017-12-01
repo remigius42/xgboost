@@ -52,5 +52,5 @@ if [ ${TASK} == "build_jvm" ]; then
     cp make/config.mk ./config.mk
     make jvm
     cd jvm-packages
-    mvn -DskipTests=true -Dcheckstyle.skip=true package
+    mvn -Dcheckstyle.skip=true package
 fi
