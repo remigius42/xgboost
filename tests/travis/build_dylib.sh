@@ -53,4 +53,7 @@ if [ ${TASK} == "build_jvm" ]; then
     make jvm
     cd jvm-packages
     mvn -Dcheckstyle.skip=true package
+    cd ../tests
+    javac -cp ../jvm-packages/xgboost4j/target/xgboost4j-0.7-jar-with-dependencies.jar:. XGBoostTest.java
+    java -cp ../jvm-packages/xgboost4j/target/xgboost4j-0.7-jar-with-dependencies.jar:. XGBoostTest
 fi
