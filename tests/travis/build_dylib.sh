@@ -19,9 +19,13 @@
 # fi
 
 if [ ${TASK} == "build_dylib" ]; then
-    cp make/config.mk ./config.mk
+    export PATH="/usr/local/bin:$PATH"
+    echo $PATH
+    export CC=gcc-7
+    export CXX=g++-7
     echo "gcc info"
     gcc --version
+    cp make/config.mk ./config.mk
     make -j2
 fi
 
