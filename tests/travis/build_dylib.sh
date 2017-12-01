@@ -51,4 +51,6 @@ if [ ${TASK} == "build_jvm" ]; then
     ls /System/Library/Frameworks/JavaVM.framework/Headers
     cp make/config.mk ./config.mk
     make jvm
+    cd jvm-packages
+    mvn -DskipTests=true -Dcheckstyle.skip=true package
 fi
