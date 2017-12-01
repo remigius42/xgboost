@@ -80,6 +80,8 @@ before_install:
   - brew install gcc
   - brew tap caskroom/versions
   - brew cask install java8
+  - brew install cmake
+  - brew install maven
 
 install:
   - source tests/travis/setup.sh
