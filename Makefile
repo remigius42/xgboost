@@ -92,10 +92,10 @@ ifeq ($(UNAME), Windows)
 else
 ifeq ($(UNAME), Darwin)
 	XGBOOST_DYLIB = lib/libxgboost.dylib
-	CFLAGS += -fPIC
+	CFLAGS += -fPIC -fpermissive
 else
 	XGBOOST_DYLIB = lib/libxgboost.so
-	CFLAGS += -fPIC
+	CFLAGS += -fPIC -fpermissive
 endif
 endif
 
