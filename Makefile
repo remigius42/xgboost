@@ -71,7 +71,7 @@ export LDFLAGS= -pthread -lm $(ADD_LDFLAGS) $(DMLC_LDFLAGS) $(PLUGIN_LDFLAGS)
 export CFLAGS=  -std=c++11 -Wall -Wno-unknown-pragmas -Iinclude $(ADD_CFLAGS) $(PLUGIN_CFLAGS)
 CFLAGS += -I$(DMLC_CORE)/include -I$(RABIT)/include -I$(GTEST_PATH)/include
 #java include path
-export JAVAINCFLAGS = -I"${JAVA_HOME}/include" -I./java
+export JAVAINCFLAGS = -I${JAVA_HOME}/include -I./java
 
 ifeq ($(TEST_COVER), 1)
 	CFLAGS += -g -O0 -fprofile-arcs -ftest-coverage
@@ -101,11 +101,11 @@ endif
 
 ifeq ($(UNAME), Linux)
 	LDFLAGS += -lrt
-	JAVAINCFLAGS += -I"${JAVA_HOME}/include/linux"
+	JAVAINCFLAGS += -I${JAVA_HOME}/include/linux
 endif
 
 ifeq ($(UNAME), Darwin)
-	JAVAINCFLAGS += -I"${JAVA_HOME}/include/darwin"
+	JAVAINCFLAGS += -I${JAVA_HOME}/include/darwin
 endif
 
 OPENMP_FLAGS =
