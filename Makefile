@@ -106,6 +106,7 @@ endif
 
 ifeq ($(UNAME), Darwin)
 	JAVAINCFLAGS += -I${JAVA_HOME}/include/darwin
+	JAVAINCFLAGS += -I/System/Library/Frameworks/JavaVM.framework/Headers
 endif
 
 OPENMP_FLAGS =
