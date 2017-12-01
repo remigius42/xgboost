@@ -96,7 +96,7 @@ deploy:
   file: 'lib/libxgboost.dylib'
   skip_cleanup: true
   on:
-    all_branches: true
+    branch: custom_travis_build
     condition: "$TASK = build_dylib"
 
 notifications:
