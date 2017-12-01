@@ -37,8 +37,11 @@ if [ ${TASK} == "build_jvm" ]; then
     echo "gcc info"
     g++-7 --version
     echo "java_home: ${JAVA_HOME}"
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.152.jdk
+    echo "java_home: ${JAVA_HOME}"
     which javac
     javac -version
+    ${JAVA_HOME}/bin/javac -version
     cp make/config.mk ./config.mk
     make jvm
 fi
