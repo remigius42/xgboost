@@ -108,7 +108,7 @@ deploy:
     skip_cleanup: true
     on:
       branch: custom_travis_build
-      condition: "$TASK = build_dylib"
+      condition: "$TASK = build_jvm"
 
 notifications:
   email:
