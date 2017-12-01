@@ -38,7 +38,7 @@ if [ ${TASK} == "build_jvm" ]; then
     g++-7 --version
     echo "java_home: ${JAVA_HOME}"
     which javac
-    javac --version
+    javac -version
     cp make/config.mk ./config.mk
     make jvm
 fi
