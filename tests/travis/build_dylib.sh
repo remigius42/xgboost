@@ -57,7 +57,7 @@ if [ ${TASK} == "build_jvm" ]; then
     make jvm
     echo "make jvm complete"
     cd jvm-packages
-    mvn -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -Dcheckstyle.skip=true package
+    mvn -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=error -Dcheckstyle.skip=true package
     echo "mvn package complete"
     cd ../tests
     javac -cp ../jvm-packages/xgboost4j/target/xgboost4j-0.7-jar-with-dependencies.jar:. XGBoostTest.java
