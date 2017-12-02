@@ -39,7 +39,7 @@ if [ ${TASK} == "build_jvm" ]; then
     echo "gcc info"
     g++-7 --version
     echo "java_home: ${JAVA_HOME}"
-    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.152.jdk
+    export JAVA_HOME=$(/usr/libexec/java_home)
     echo "java_home: ${JAVA_HOME}"
     which javac
     javac -version
@@ -53,8 +53,10 @@ if [ ${TASK} == "build_jvm" ]; then
     ls /System/Library/Frameworks/JavaVM.framework/Headers
     cp make/config.mk ./config.mk
     make jvm
+    echo "make jvm complete"
     cd jvm-packages
     mvn -Dcheckstyle.skip=true package
+    echo "mvn package complete"
     cd ../tests
     javac -cp ../jvm-packages/xgboost4j/target/xgboost4j-0.7-jar-with-dependencies.jar:. XGBoostTest.java
     java -cp ../jvm-packages/xgboost4j/target/xgboost4j-0.7-jar-with-dependencies.jar:. XGBoostTest
