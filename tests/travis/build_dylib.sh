@@ -52,6 +52,8 @@ if [ ${TASK} == "build_jvm" ]; then
     echo "ls system Java headers"
     ls /System/Library/Frameworks/JavaVM.framework/Headers
     cp make/config.mk ./config.mk
+    make -j2
+    echo "make complete"
     make jvm
     echo "make jvm complete"
     cd jvm-packages
