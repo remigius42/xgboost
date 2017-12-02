@@ -20,6 +20,10 @@
 export CC = gcc-7
 export CXX = g++-7
 # export MPICXX = mpicxx
+SHLIB_OPENMP_CFLAGS=-fopenmp
+SHLIB_OPENMP_CXXFLAGS=-fopenmp
+SHLIB_OPENMP_FCFLAGS=-fopenmp
+SHLIB_OPENMP_FFLAGS=-fopenmp
 
 # the additional link flags you want to add
 ADD_LDFLAGS =
