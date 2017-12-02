@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # cp make/travis.mk config.mk
 # make -f dmlc-core/scripts/packages.mk lz4
 
