@@ -57,6 +57,8 @@ matrix:
       env: TASK=python_test
     - os: osx
       env: TASK=java_test
+    - os: osx
+      env: TASK=build_dylib
 
 # dependent apt packages
 addons:
