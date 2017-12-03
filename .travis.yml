@@ -9,7 +9,7 @@ branches:
 # whitelist custom build branch
 branches:
   only:
-    - custom_travis_build
+    - mac_os_build
 
 # disable sudo for container build.
 sudo: required
