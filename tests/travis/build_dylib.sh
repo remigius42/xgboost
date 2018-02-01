@@ -40,8 +40,9 @@ if [ ${TASK} == "build_jvm" ]; then
     #export CXX=g++-7
     export CC=gcc-6
     export CXX=g++-6
-    echo "gcc info"
-    g++-7 --version
+    echo "g++ info"
+    g++-6 --version || echo "g++-6 not available"
+    g++-7 --version || echo "g++-7 not available"
     echo "java_home: ${JAVA_HOME}"
     export JAVA_HOME=$(/usr/libexec/java_home)
     echo "java_home: ${JAVA_HOME}"
