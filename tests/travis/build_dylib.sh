@@ -23,8 +23,10 @@ set -e
 if [ ${TASK} == "build_dylib" ]; then
     export PATH="/usr/local/bin:$PATH"
     echo $PATH
-    export CC=gcc-7
-    export CXX=g++-7
+    #export CC=gcc-7
+    #export CXX=g++-7
+    export CC=gcc-6
+    export CXX=g++-6
     echo "gcc info"
     g++-7 --version
     cp make/config.mk ./config.mk
@@ -34,8 +36,10 @@ fi
 if [ ${TASK} == "build_jvm" ]; then
     export PATH="/usr/local/bin:$PATH"
     echo $PATH
-    export CC=gcc-7
-    export CXX=g++-7
+    #export CC=gcc-7
+    #export CXX=g++-7
+    export CC=gcc-6
+    export CXX=g++-6
     echo "gcc info"
     g++-7 --version
     echo "java_home: ${JAVA_HOME}"

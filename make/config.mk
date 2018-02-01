@@ -17,8 +17,10 @@
 #----------------------------------------------------
 
 # choice of compiler, by default use system preference.
-export CC = gcc-7
-export CXX = g++-7
+#export CC = gcc-7
+#export CXX = g++-7
+export CC = gcc-6
+export CXX = g++-6
 # export MPICXX = mpicxx
 SHLIB_OPENMP_CFLAGS=-fopenmp
 SHLIB_OPENMP_CXXFLAGS=-fopenmp
