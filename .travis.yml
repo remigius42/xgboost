@@ -124,7 +124,7 @@ deploy:
     file: 'jvm-packages/xgboost4j/target/xgboost4j-0.7-jar-with-dependencies.jar'
     skip_cleanup: true
     on:
-      branch: test_build_with_gcc6
+      branch: custom_travis_build
       condition: "$TASK = build_jvm"
 
 notifications:
