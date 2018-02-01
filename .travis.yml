@@ -9,7 +9,7 @@ branches:
 # whitelist custom build branch
 branches:
   only:
-    - mac_os_build
+    - test_build_with_gcc6
 
 # disable sudo for container build.
 sudo: required
@@ -116,7 +116,7 @@ deploy:
     file: 'lib/libxgboost.dylib'
     skip_cleanup: true
     on:
-      branch: custom_travis_build
+      branch: test_build_with_gcc6
       condition: "$TASK = build_dylib"
   - provider: releases
     api_key:
@@ -124,7 +124,7 @@ deploy:
     file: 'jvm-packages/xgboost4j/target/xgboost4j-0.7-jar-with-dependencies.jar'
     skip_cleanup: true
     on:
-      branch: custom_travis_build
+      branch: test_build_with_gcc6
       condition: "$TASK = build_jvm"
 
 notifications:
