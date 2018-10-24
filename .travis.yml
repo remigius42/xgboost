@@ -9,7 +9,7 @@ branches:
 # whitelist custom build branch
 branches:
   only:
-    - osx_build
+    - osx_build_v0.80
 
 # disable sudo for container build.
 sudo: required
