@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 
 if [ ${TASK} == "build_dylib" ]; then
