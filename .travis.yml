@@ -1,9 +1,21 @@
+# block tags
+if: tag IS blank
+
+# block master branch
+branches:
+  except:
+    - master
+
+# whitelist custom build branch
+branches:
+  only:
+    - osx_build
+
 # disable sudo for container build.
 sudo: required
 
-# Enabling test on Linux and OS X
+# Enabling test on OS X
 os:
-  - linux
   - osx
 
 osx_image: xcode8
@@ -28,17 +40,19 @@ env:
     - TASK=cpp_test
     # distributed test
     - TASK=distributed_test
+    # build dylib
+    - TASK=build_dylib
 
 matrix:
   exclude:
-    - os: osx
-      env: TASK=lint
-    - os: osx
-      env: TASK=cmake_test
+#    - os: osx
+#      env: TASK=lint
+#    - os: osx
+#      env: TASK=cmake_test
     - os: linux
       env: TASK=r_test
-    - os: osx
-      env: TASK=python_lightweight_test
+#    - os: osx
+#      env: TASK=python_lightweight_test
     - os: osx
       env: TASK=cpp_test
     - os: osx
@@ -67,12 +81,16 @@ before_install:
   - source dmlc-core/scripts/travis/travis_setup_env.sh
   - export PYTHONPATH=${PYTHONPATH}:${PWD}/python-package
   - echo "MAVEN_OPTS='-Xmx2g -XX:MaxPermSize=1024m -XX:ReservedCodeCacheSize=512m -Dorg.slf4j.simpleLogger.defaultLogLevel=error'" > ~/.mavenrc
+  - brew update
+  - brew list
+  - brew install gcc@7
 
 install:
   - source tests/travis/setup.sh
 
 script:
   - tests/travis/run_test.sh
+  - tests/travis/build_dylib.sh
 
 cache:
   directories:
@@ -88,6 +106,16 @@ after_failure:
 after_success:
   - tree build
   - bash <(curl -s https://codecov.io/bash) -a '-o src/ src/*.c'
+
+deploy:
+  - provider: releases
+    api_key:
+      secure: "G3mesEFTl46uUKI5zNLYkEC80U3FwPkrYv5uupdZoGmX66EuoHDaqJZ4qggZrGyVzAvj6sXJGdsHG/izqgrWS2Ho1xo8s9CWoAmyef00GdxCadlf2qv/9CVYgRdrlMlqAWbxK1I3YVkLTnEbuGiOwTtDuOSo4Gsc31T6A67c/01UGSTFN0Tx1hI4bV52NeS+oBOZcRQegLfnDxt0BTvleZE3s61Loh9Ftsba3zHP5pbaq0pq/mhjbLoZof3AKDYBCuwNLVxRGWTf9MejvYqu77Wbhq57seNCSjrigyEsvp4GP17ftk6nk52/lXiDTgEUae9WQdv7Bno+94IHSCETU6Ske6rm/ijRDa0Maa5OY8/M2skyEjdQSfg3RGZCPplsMoJ6M4BaBXufhuJBlHz48CZFocFBAFyUPIsCmoZfrxpge6fpdqd/iiK8XazXNfCsvsTNfIu+cP6qQNhMdaJ5cm/M5aVClCs/Mqpe6X6iPTew+KwY1nOzVbSGSeVLJRX9jwVaSGnF7o5rFjBUp8bjUrCnepXHFMeZECat9s14OYytDwNkB+KGlVHGd56gcIjW5WOa9IVnUqN943X+eVL+TLFj3z4+JOc5RE3YcCbheQ61ORB9Vyd8yf1zGM9HRSkh61pzY8+hsHEj05c2wvfHl1yLWOZ62Am8VeMjMr8wNCo="
+    file: 'lib/libxgboost.dylib'
+    skip_cleanup: true
+    on:
+      branch: custom_travis_build
+      condition: "$TASK = build_dylib"
 
 notifications:
   email:
