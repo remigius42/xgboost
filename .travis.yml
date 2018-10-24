@@ -47,14 +47,12 @@ env:
     
 matrix:
   exclude:
-#    - os: osx
-#      env: TASK=lint
-#    - os: osx
-#      env: TASK=cmake_test
-    - os: linux
-      env: TASK=r_test
-#    - os: osx
-#      env: TASK=python_lightweight_test
+    - os: osx
+      env: TASK=lint
+    - os: osx
+      env: TASK=cmake_test
+    - os: osx
+      env: TASK=python_lightweight_test
     - os: osx
       env: TASK=cpp_test
     - os: osx
@@ -120,7 +118,7 @@ deploy:
     file: 'lib/libxgboost.dylib'
     skip_cleanup: true
     on:
-      branch: custom_travis_build
+      branch: osx_build
       condition: "$TASK = build_dylib"
 
 notifications:
