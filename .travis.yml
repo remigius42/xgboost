@@ -1,5 +1,5 @@
 # block tags
-# if: tag IS blank
+if: tag IS blank
 
 # block master branch
 branches:
@@ -112,6 +112,7 @@ deploy:
     file: 'lib/libxgboost.dylib'
     skip_cleanup: true
     on:
+      repo: remigius42/xgboost
       branch: osx_build_v0.80
       condition: "$TASK = build_dylib"
 
