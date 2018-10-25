@@ -1,5 +1,5 @@
 # block tags
-if: tag IS blank
+# if: tag IS blank
 
 # block master branch
 branches:
