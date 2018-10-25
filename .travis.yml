@@ -87,7 +87,7 @@ install:
   - source tests/travis/setup.sh
 
 script:
-  - tests/travis/run_test.sh
+  # - tests/travis/run_test.sh
   - tests/travis/build_dylib.sh
 
 cache:
