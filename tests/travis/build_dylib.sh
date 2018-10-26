@@ -57,7 +57,7 @@ if [ ${TASK} == "build_jvm" ]; then
     cd jvm-packages
     mvn -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=error -Dcheckstyle.skip=true package -P release,assembly
     echo -e "mvn package complete\n"
-    ls jvm-packages/xgboost4j/target/
+    ls xgboost4j/target/
     #echo "Running custom test"
     #cd ../tests
     #javac -cp ../jvm-packages/xgboost4j/target/xgboost4j-0.7-jar-with-dependencies.jar:. XGBoostTest.java
