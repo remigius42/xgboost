@@ -53,10 +53,11 @@ if [ ${TASK} == "build_jvm" ]; then
     make -j4
     #echo "make complete"
     #make jvm
-    echo "make jvm complete"
+    #echo "make jvm complete"
     cd jvm-packages
-    mvn -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=error -Dcheckstyle.skip=true package
+    mvn -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=error -Dcheckstyle.skip=true package -P release,assembly
     echo -e "mvn package complete\n"
+    ls jvm-packages/xgboost4j/target/
     #echo "Running custom test"
     #cd ../tests
     #javac -cp ../jvm-packages/xgboost4j/target/xgboost4j-0.7-jar-with-dependencies.jar:. XGBoostTest.java
