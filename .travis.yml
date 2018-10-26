@@ -91,7 +91,7 @@ before_install:
   - brew update
   - brew list
   - brew install gcc@7
-  - brew cask install java8
+  - brew cask install java
 
 install:
   - source tests/travis/setup.sh
