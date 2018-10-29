@@ -59,6 +59,7 @@ if [ ${TASK} == "build_jvm" ]; then
     echo -e "mvn package complete\n"
     ls xgboost4j/target/
     ls ../lib
+    otool -L ../lib/libxgboost.dylib
     otool -L ../lib/libxgboost4j.dylib
     #echo "Running custom test"
     #cd ../tests
