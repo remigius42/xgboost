@@ -114,7 +114,8 @@ ifeq ($(USE_OPENMP), 1)
 else
 	OPENMP_FLAGS = -DDISABLE_OPENMP
 endif
-CFLAGS += $(OPENMP_FLAGS)
+#CFLAGS += $(OPENMP_FLAGS)
+CFLAGS += -DDISABLE_OPENMP
 
 # specify tensor path
 .PHONY: clean all lint clean_all doxygen rcpplint pypack Rpack Rbuild Rcheck java pylint
