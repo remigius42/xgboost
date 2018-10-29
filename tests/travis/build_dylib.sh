@@ -24,7 +24,7 @@ fi
 if [ ${TASK} == "build_jvm" ]; then
     cp make/config.mk ./config.mk
     sed -ie 's/# export CC = gcc/export CC = gcc-7/g' config.mk
-    sed -ie 's/# export CXX = g++/export CC = g++-7/g' config.mk
+    sed -ie 's/# export CXX = g++/export CXX = g++-7/g' config.mk
     echo "pwd:"
     pwd
     echo "./config.mk"
