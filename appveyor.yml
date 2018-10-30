@@ -6,28 +6,30 @@ environment:
     R_ARCH: x64
     USE_RTOOLS: true
     matrix:
-        - target: msvc
-          ver: 2013
-          generator: "Visual Studio 12 2013 Win64"
-          configuration: Release
-        - target: msvc
-          ver: 2015
-          generator: "Visual Studio 14 2015 Win64"
-          configuration: Debug
-        - target: msvc
-          ver: 2015
-          generator: "Visual Studio 14 2015 Win64"
-          configuration: Release
-        - target: mingw
-          generator: "Unix Makefiles"
-        - target: jvm
-        - target: rmsvc
-          ver: 2015
-          generator: "Visual Studio 14 2015 Win64"
-          configuration: Release
-        - target: rmingw
-          generator: "Unix Makefiles"
+        # - target: msvc
+        #   ver: 2013
+        #   generator: "Visual Studio 12 2013 Win64"
+        #   configuration: Release
+        # - target: msvc
+        #   ver: 2015
+        #   generator: "Visual Studio 14 2015 Win64"
+        #   configuration: Debug
+        # - target: msvc
+        #   ver: 2015
+        #   generator: "Visual Studio 14 2015 Win64"
+        #   configuration: Release
+        # - target: mingw
+        #   generator: "Unix Makefiles"
+        # - target: jvm
+        # - target: rmsvc
+        #   ver: 2015
+        #   generator: "Visual Studio 14 2015 Win64"
+        #   configuration: Release
+        # - target: rmingw
+        #   generator: "Unix Makefiles"
+        - target: packages
 
+        
 #matrix:
 #    fast_finish: true
 
@@ -97,7 +99,20 @@ build_script:
         cmake --build . --target install --config Release
       )
     - if /i "%target%" == "jvm" cd jvm-packages && mvn test -pl :xgboost4j
-
+    - if /i "%target%" == "packages" (
+        java -version &&
+        "%JAVA_HOME%\bin\java" -version -XX:+PrintCommandLineFlags &&
+        netsh advfirewall set allprofiles state off &&
+        cd %APPVEYOR_BUILD_FOLDER% &&
+        cp make/mingw64.mk config.mk &&
+        make --version &&
+        mingw32-make --version &&
+        mingw32-make -j2 &&
+        cp make/mingw64.mk config.mk &&
+        mingw32-make jvm &&
+        cd jvm-packages &&
+        mvn package -Dcheckstyle.skip=true -DskipTests=true
+)
 test_script:
     - cd %APPVEYOR_BUILD_FOLDER%
     - if /i "%DO_PYTHON%" == "on" python -m nose tests/python
