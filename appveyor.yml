@@ -110,8 +110,7 @@ build_script:
         mingw32-make -j2 &&
         cp make/mingw64.mk config.mk &&
         cd jvm-packages &&
-        set MAVEN_OPTS="-Xmx1024m -Xss128M -XX:+CMSClassUnloadingEnabled" &&        
-        mvn package -P release,assembly -Dcheckstyle.skip=true -DskipTests=true &&
+        mvn package -P assembly -Dcheckstyle.skip=true -DskipTests=true -Dmaven.test.skip=true &&
         echo "foobar"
       )
 
