@@ -6,28 +6,28 @@ environment:
     R_ARCH: x64
     USE_RTOOLS: true
     matrix:
-        # - target: msvc
-        #   ver: 2013
-        #   generator: "Visual Studio 12 2013 Win64"
-        #   configuration: Release
-        # - target: msvc
-        #   ver: 2015
-        #   generator: "Visual Studio 14 2015 Win64"
-        #   configuration: Debug
-        # - target: msvc
-        #   ver: 2015
-        #   generator: "Visual Studio 14 2015 Win64"
-        #   configuration: Release
-        # - target: mingw
-        #   generator: "Unix Makefiles"
-        # - target: jvm
-        # - target: rmsvc
-        #   ver: 2015
-        #   generator: "Visual Studio 14 2015 Win64"
-        #   configuration: Release
-        # - target: rmingw
-        #   generator: "Unix Makefiles"
-        - target: packages
+      - target: packages
+      # - target: msvc
+      #   ver: 2013
+      #   generator: "Visual Studio 12 2013 Win64"
+      #   configuration: Release
+      # - target: msvc
+      #   ver: 2015
+      #   generator: "Visual Studio 14 2015 Win64"
+      #   configuration: Debug
+      # - target: msvc
+      #   ver: 2015
+      #   generator: "Visual Studio 14 2015 Win64"
+      #   configuration: Release
+      # - target: mingw
+      #   generator: "Unix Makefiles"
+      # - target: jvm
+      # - target: rmsvc
+      #   ver: 2015
+      #   generator: "Visual Studio 14 2015 Win64"
+      #   configuration: Release
+      # - target: rmingw
+      #   generator: "Unix Makefiles"
 
         
 #matrix:
@@ -111,7 +111,7 @@ build_script:
         cp make/mingw64.mk config.mk &&
         mingw32-make jvm &&
         cd jvm-packages &&
-        mvn package -Dcheckstyle.skip=true -DskipTests=true
+        mvn package -Dcheckstyle.skip=true -DskipTests=true -P release,assembly
       )
 
 test_script:
