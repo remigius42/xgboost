@@ -149,5 +149,5 @@ artifacts:
       name: Bits
     - path: '**\xgboost*.dll'
       name: DLLs
-    - path: jvm-packages/xgboost4j/target/xgboost4j*with-dependencies.jar
+    - path: '**\xgboost4j*with-dependencies.jar'
       name: XGBoost java archive including dependencies
