@@ -110,7 +110,7 @@ build_script:
         mingw32-make -j2 &&
         cp make/mingw64.mk config.mk &&
         cd jvm-packages &&
-        mvn package -P assembly -Dcheckstyle.skip=true -DskipTests=true -Dmaven.test.skip=true &&
+        mvn package -P assembly -Dcheckstyle.skip=true -DskipTests=true -Dmaven.test.skip=true -pl !xgboost4j-flink,!xgboost4j-spark,!xgboost4j-example &&
         echo "foobar"
       )
 
