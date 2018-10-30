@@ -81,3 +81,5 @@ PLUGIN_UPDATER_GPU ?= OFF
 ifeq ($(PLUGIN_UPDATER_GPU),ON)
   XGB_PLUGINS += plugin/updater_gpu/plugin.mk
 endif
+
+CFLAGS += -static-libstdc++
