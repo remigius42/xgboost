@@ -110,7 +110,7 @@ build_script:
         mingw32-make -j2 &&
         cp make/mingw64.mk config.mk &&
         cd jvm-packages &&
-        set MAVEN_OPTS="-Xmx2g -Xss128M -XX:MetaspaceSize=512M -XX:MaxMetaspaceSize=1024M -XX:+CMSClassUnloadingEnabled" &&        
+        set MAVEN_OPTS="-Xmx1g -Xss128M -XX:MetaspaceSize=512M -XX:MaxMetaspaceSize=1024M -XX:+CMSClassUnloadingEnabled" &&        
         mvn package -P release,assembly -Dcheckstyle.skip=true -DskipTests=true &&
         echo "foobar"
       )
