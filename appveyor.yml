@@ -112,7 +112,8 @@ build_script:
         mingw32-make jvm &&
         cd jvm-packages &&
         mvn package -Dcheckstyle.skip=true -DskipTests=true
-)
+      )
+
 test_script:
     - cd %APPVEYOR_BUILD_FOLDER%
     - if /i "%DO_PYTHON%" == "on" python -m nose tests/python
